@@ -1,23 +1,25 @@
-var app=angular.modul("myapp",[])
-.config(functions($stateprovider)
+var app=angular.modul("myapp",['ui.router'])
+app.config(['$stateProvider','$urlRouteProvider',functions($stateprovider, $urlRouteProvider)
+
 {
+	$urlRouteProvider.otherwise('/');
 	$state provider 
 	.state("home",{
 		url:"\home",
 		template url:"templates\home.html",
 		controller:"homeController",
-		controller As:"homectrl"
+		controller As:"homeCtrl"
 	})
 	.state("technology",{
 		url:"\technology",
 		template url:"templates\technology.html",
-		controller:"technologycontroller",
-		controller As:"technologyetrl"
+		controller:"technologyController",
+		controller As:"technologyectrl"
 	})
 	.state("employee",{
 		url:"\employee",
 		template url:"templates\employee.html",
-		controller:"employeecontroler",
+		controller:"employeeControler",
 		controller As:"employeectrl"
 		resolve:{
 			employee list:function($http){
@@ -31,17 +33,17 @@ var app=angular.modul("myapp",[])
   
 	})
 
+
+.controller("homeController",function(){
+	this.message="home.html";
 })
-.controller("home controller",function(){
-	this.message="home page";
-})
-.controller("courses controller",function(){
+.controller("coursesController",function(){
 	this.technology=["c++","vb.net","asp.net","sql srver","angular js","java"];
 
 })
 .controller("employee controller",function(employee list,$route,$location){
 	var vm=this;
-	vm.employee search=function(){
+	vm.employeesearch=function(){
 		if(vm.name)
 			$location.url("/employeesearch"+vm.name)
 		else
