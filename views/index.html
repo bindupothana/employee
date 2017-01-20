@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/script.js"></script>
+
+<body ng-app="myApp">
+
+<p><a href="#/">home</a></p>
+
+<a href="#technology">technology</a>
+<a href="#Employee">employee</a>
+
+<p>Click on the links to read about London and Paris.</p>
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "home.html"
+    })
+    .when("/technology", {
+        employeeUrl : "technology.html"
+    })
+    .when("/employee", {
+        employeeUrl : "employee.html"
+    });
+});
+</script>
+
+</body>
+</html>
